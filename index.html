@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProgressFlow - Track Your Journey</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <svg class="brand-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span>ProgressFlow</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link" data-page="home">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="#progress" class="nav-link active" data-page="progress">
+                <i class="far fa-calendar"></i> Progress
+            </a>
+            <a href="#summary" class="nav-link" data-page="summary">
+                <i class="fas fa-chart-bar"></i> Summary
+            </a>
+            <a href="#network" class="nav-link" data-page="network">
+                <i class="fas fa-users"></i> Network
+            </a>
+            <a href="#notifications" class="nav-link" data-page="notifications">
+                <i class="far fa-bell"></i> Notifications
+            </a>
+            <a href="#profile" class="nav-link" data-page="profile">
+                <i class="far fa-user"></i> Profile
+            </a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Home Page -->
+        <section id="home-page" class="page">
+            <div class="hero-section">
+                <h1 class="welcome-title">Welcome back, <span id="userName">Naveesha</span></h1>
+                <div class="today-card">
+                    <p class="today-label">Today is</p>
+                    <h2 class="today-date" id="currentDate"></h2>
+                    <h3 class="hero-tagline">Every small step forward is progress worth celebrating</h3>
+                    <p class="hero-description">
+                        Take a moment to reflect on what you've accomplished today.<br>
+                        Your future self will thank you for documenting this journey.
+                    </p>
+                    <button class="btn-primary" id="logProgressBtn">
+                        <i class="fas fa-plus"></i> Log Today's Progress
+                    </button>
+                </div>
+                <div class="stats-preview">
+                    <div class="stat-preview-card">
+                        <div class="stat-preview-value" id="currentStreakHome">3</div>
+                        <div class="stat-preview-label">Current Streak</div>
+                    </div>
+                    <div class="stat-preview-card">
+                        <div class="stat-preview-value" id="bestStreakHome">3</div>
+                        <div class="stat-preview-label">Best Streak</div>
+                    </div>
+                    <div class="stat-preview-card">
+                        <div class="stat-preview-value">Feb</div>
+                        <div class="stat-preview-label">This Month</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Page -->
+        <section id="progress-page" class="page active">
+            <div class="page-header-section">
+                <div>
+                    <h1 class="page-title">Your Progress Journey</h1>
+                    <p class="page-subtitle">Track your daily achievements and watch your consistency grow</p>
+                </div>
+            </div>
+            <div class="calendar-legend">
+                <div class="legend-item">
+                    <span class="legend-color work"></span>
+                    <span>Work</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color personal"></span>
+                    <span>Personal</span>
+                </div>
+                <p class="calendar-hint">Click any date to add or view progress</p>
+            </div>
+            <div id="calendar" class="calendar-grid"></div>
+        </section>
+
+        <!-- Summary Page -->
+        <section id="summary-page" class="page">
+            <div class="page-header-section">
+                <div>
+                    <h1 class="page-title">Progress Summary</h1>
+                    <p class="page-subtitle">Dive deep into your progress patterns and insights</p>
+                </div>
+                <select id="monthSelect" class="month-selector"></select>
+            </div>
+            
+            <div class="summary-stats">
+                <div class="summary-stat-card">
+                    <i class="fas fa-chart-line stat-icon"></i>
+                    <div class="stat-number" id="totalEntries">3</div>
+                    <div class="stat-label">Total Entries</div>
+                </div>
+                <div class="summary-stat-card">
+                    <i class="fas fa-briefcase stat-icon work-icon"></i>
+                    <div class="stat-number" id="workCount">2</div>
+                    <div class="stat-label">Work Progress</div>
+                </div>
+                <div class="summary-stat-card">
+                    <i class="fas fa-heart stat-icon personal-icon"></i>
+                    <div class="stat-number" id="personalCount">1</div>
+                    <div class="stat-label">Personal Growth</div>
+                </div>
+            </div>
+
+            <div class="ai-insights-section">
+                <div class="insights-header">
+                    <div class="insights-title">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI Insights</h3>
+                    </div>
+                    <button class="btn-regenerate">
+                        <i class="fas fa-sync-alt"></i> Regenerate
+                    </button>
+                </div>
+                
+                <div class="insights-content">
+                    <div class="insights-column">
+                        <h4>Skills & Tools Identified</h4>
+                        <div id="skillsTags" class="skills-tags"></div>
+                        
+                        <h4 class="mt-3">Key Trends</h4>
+                        <ul class="trends-list" id="trendsList">
+                            <li>Increased focus on cloud computing and machine learning</li>
+                            <li>Integration of big data solutions into workflows</li>
+                            <li>Documenting and sharing technical knowledge through blogging</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="insights-column">
+                        <h4>Insights</h4>
+                        <ul class="insights-list">
+                            <li>Consistent engagement in both personal and work projects</li>
+                            <li>Utilization of cloud tools for handling data efficiently</li>
+                            <li>Sharing knowledge may enhance understanding and establish authority in the field</li>
+                        </ul>
+                        
+                        <h4 class="mt-3">Recommendations</h4>
+                        <ul class="insights-list">
+                            <li>Continue blogging about technical topics to solidify knowledge</li>
+                            <li>Explore advanced features of AWS and Spark for better performance</li>
+                            <li>Allocate regular time for personal projects to balance professional growth</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Network Page -->
+        <section id="network-page" class="page">
+            <div class="page-header">
+                <h2>Network</h2>
+            </div>
+            <div class="network-content">
+                <div class="network-section">
+                    <h3>Followers <span class="count" id="followersCount">0</span></h3>
+                    <div id="followersList" class="user-list"></div>
+                </div>
+                <div class="network-section">
+                    <h3>Following <span class="count" id="followingCount">0</span></h3>
+                    <div id="followingList" class="user-list"></div>
+                </div>
+                <div class="network-section">
+                    <h3>Pending Requests <span class="count" id="requestsCount">0</span></h3>
+                    <div id="requestsList" class="user-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notifications Page -->
+        <section id="notifications-page" class="page">
+            <div class="page-header">
+                <h2>Notifications</h2>
+            </div>
+            <div id="notificationsList" class="notifications-list"></div>
+        </section>
+
+        <!-- Profile Page -->
+        <section id="profile-page" class="page">
+            <div class="profile-page-header">
+                <div>
+                    <h1 class="page-title">Your Profile</h1>
+                    <p class="page-subtitle">Manage your profile and track your progress</p>
+                </div>
+                <button class="btn-edit-profile" id="editProfileBtn">
+                    <i class="fas fa-edit"></i> Edit Profile
+                </button>
+            </div>
+
+            <div class="profile-layout">
+                <!-- Left Column -->
+                <div class="profile-left-column">
+                    <!-- Profile Information Card -->
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <i class="far fa-user"></i>
+                            <h3>Profile Information</h3>
+                        </div>
+                        <div class="profile-card-content">
+                            <div class="profile-avatar-section">
+                                <div class="profile-avatar-large">
+                                    <span id="profileInitials">NS</span>
+                                </div>
+                                <div class="profile-basic-info">
+                                    <h2 id="profileName">Naveesha Srivastava</h2>
+                                    <p id="profileEmail">naveeshaneet@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="profile-bio-section">
+                                <label>Bio</label>
+                                <p id="profileBio">Building better habits, one day at a time. Passionate about personal growth and continuous learning.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links Card -->
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <i class="fas fa-link"></i>
+                            <h3>Social Links</h3>
+                        </div>
+                        <div class="profile-card-content">
+                            <div id="profileLinksList" class="social-links-list"></div>
+                            <button class="btn-add-link" id="addLinkBtn">
+                                <i class="fas fa-plus"></i> Add Link
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="profile-right-column">
+                    <!-- Progress Stats Card -->
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <i class="far fa-calendar-check"></i>
+                            <h3>Progress Stats</h3>
+                        </div>
+                        <div class="profile-card-content">
+                            <div class="profile-stat-item total">
+                                <div class="profile-stat-value" id="profileTotalEntries">8</div>
+                                <div class="profile-stat-label">Total Entries</div>
+                            </div>
+                            <div class="profile-stat-row">
+                                <div class="profile-stat-label-row">Work</div>
+                                <div class="profile-stat-value-row" id="profileWorkEntries">4</div>
+                            </div>
+                            <div class="profile-stat-row">
+                                <div class="profile-stat-label-row">Personal</div>
+                                <div class="profile-stat-value-row" id="profilePersonalEntries">4</div>
+                            </div>
+                            <div class="profile-stat-row">
+                                <div class="profile-stat-label-row">Public</div>
+                                <div class="profile-stat-value-row success" id="profilePublicEntries">6</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Network Card -->
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <i class="fas fa-users"></i>
+                            <h3>Network</h3>
+                        </div>
+                        <div class="profile-card-content">
+                            <div class="profile-stat-row">
+                                <div class="profile-stat-label-row">Followers</div>
+                                <div class="profile-stat-value-row" id="profileFollowersCount">0</div>
+                            </div>
+                            <div class="profile-stat-row">
+                                <div class="profile-stat-label-row">Following</div>
+                                <div class="profile-stat-value-row" id="profileFollowingCount">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements Card -->
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <i class="fas fa-trophy"></i>
+                            <h3>Achievements</h3>
+                        </div>
+                        <div class="profile-card-content">
+                            <div class="profile-stat-item">
+                                <div class="profile-stat-value primary" id="profileCurrentStreak">3</div>
+                                <div class="profile-stat-label">Current Streak</div>
+                            </div>
+                            <div class="profile-stat-item">
+                                <div class="profile-stat-value primary" id="profileBestStreak">3</div>
+                                <div class="profile-stat-label">Best Streak</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sign Out Button -->
+                    <button class="btn-sign-out">
+                        <i class="fas fa-sign-out-alt"></i> Sign Out
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for logging progress -->
+    <div id="progressModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <i class="far fa-calendar modal-icon"></i>
+                    <h2>Add Progress Entry</h2>
+                </div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <p class="modal-date" id="modalDate">Sunday, February 15th, 2026</p>
+            
+            <form id="progressForm">
+                <div class="form-group">
+                    <label>Category</label>
+                    <div class="category-selector">
+                        <button type="button" class="category-btn" data-tag="work">
+                            <i class="fas fa-briefcase"></i>
+                            Work
+                        </button>
+                        <button type="button" class="category-btn active" data-tag="personal">
+                            <i class="fas fa-heart"></i>
+                            Personal
+                        </button>
+                    </div>
+                    <input type="hidden" id="selectedTag" value="personal">
+                    <input type="hidden" id="progressDate">
+                </div>
+                
+                <div class="form-group">
+                    <label>What did you accomplish?</label>
+                    <textarea 
+                        id="progressText" 
+                        maxlength="100" 
+                        placeholder="Describe what you accomplished today..."
+                        required
+                    ></textarea>
+                    <div class="char-count"><span id="charCount">0</span>/100 words</div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="toggle-label">
+                        <div>
+                            <div class="toggle-title">Make this entry public</div>
+                            <div class="toggle-description">Allow followers to see this progress entry</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="isPublic" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </label>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn-save">
+                        <i class="far fa-save"></i> Save Entry
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
